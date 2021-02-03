@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Usage: ./generateMatrix <N>
+
+# This script will generate an NxN matrix of alternating ones and twos
+
+
+filename="matrix${1}x${1}.m";
+size=$(($1 * $1));
+
+echo "%%MatrixMarket matrix array integer general" > $filename;
+echo "${1} ${1}" >> $filename;
+
+for (( i = 0; i < $size; i++ ))
+do
+    n=$(($i%2+1))
+    echo "$n" >> $filename;
+done
